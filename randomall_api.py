@@ -8,66 +8,58 @@ class randomall_api:
         self.session = Session()
         self.headers = headers.Headers().headers
         self.proxies = proxies
-        self.d = ''.join(choices(ascii_lowercase, k=31))
+        self.data_d = {'d': ''.join(choices(ascii_lowercase, k=31))}
 
     def fantasyName(self) -> str:
-        data = {'d': self.d}
-        req = self.session.post(url = self.api('general/fantasy_name'), headers = self.headers, json = data, proxies = self.proxies)
+        req = self.session.post(url = self.api('general/fantasy_name'), headers = self.headers, json = self.data_d, proxies = self.proxies)
         if req.status_code != 200: return req.json()['detail']
         else: return req.json()
 
     #var is the floor. 1 - male 0 - female
     def appearance(self, var : str) -> str:
-        data = {'d': self.d, 'var': var}
-        req = self.session.post(url = self.api('general/appearance'), headers = self.headers, json = data, proxies = self.proxies)
+        self.data_d['var'] = var
+        req = self.session.post(url = self.api('general/appearance'), headers = self.headers, json = self.data_d, proxies = self.proxies)
+        return self.data_d
         if req.status_code != 200: return req.json()['detail']
         else: return req.json()
 
     def crowd(self) -> str:
-        data = {'d': self.d}
-        req = self.session.post(url = self.api('general/crowd'), headers = self.headers, json = data, proxies = self.proxies)
+        req = self.session.post(url = self.api('general/crowd'), headers = self.headers, json = self.data_d, proxies = self.proxies)
         if req.status_code != 200: return req.json()['detail']
         else: return req.json()
 
     def character(self) -> str:
-        data = {'d': self.d}
-        req = self.session.post(url = self.api('general/character'), headers = self.headers, json = data, proxies = self.proxies)
+        req = self.session.post(url = self.api('general/character'), headers = self.headers, json = self.data_d, proxies = self.proxies)
         if req.status_code != 200: return req.json()['detail']
         else: return req.json()
 
     def abilities(self) -> str:
-        data = {'d': self.d}
-        req = self.session.post(url = self.api('general/abilities'), headers = self.headers, json = data, proxies = self.proxies)
+        req = self.session.post(url = self.api('general/abilities'), headers = self.headers, json = self.data_d, proxies = self.proxies)
         if req.status_code != 200: return req.json()['detail']
         else: return req.json()
 
     def features(self) -> str:
-        data = {'d': self.d}
-        req = self.session.post(url = self.api('general/features'), headers = self.headers, json = data, proxies = self.proxies)
+        req = self.session.post(url = self.api('general/features'), headers = self.headers, json = self.data_d, proxies = self.proxies)
         if req.status_code != 200: return req.json()['detail']
         else: return req.json()
 
     def jobs(self) -> str:
-        data = {'d': self.d}
-        req = self.session.post(url = self.api('general/jobs'), headers = self.headers, json = data, proxies = self.proxies)
+        req = self.session.post(url = self.api('general/jobs'), headers = self.headers, json = self.data_d, proxies = self.proxies)
         if req.status_code != 200: return req.json()['detail']
         else: return req.json()
 
     def race(self) -> str:
-        data = {'d': self.d}
-        req = self.session.post(url = self.api('general/race'), headers = self.headers, json = data, proxies = self.proxies)
+        req = self.session.post(url = self.api('general/race'), headers = self.headers, json = self.data_d, proxies = self.proxies)
         if req.status_code != 200: return req.json()['detail']
         else: return req.json()
 
     def superpowers(self) -> str:
-        data = {'d': self.d}
-        req = self.session.post(url = self.api('general/superpowers'), headers = self.headers, json = data, proxies = self.proxies)
+        req = self.session.post(url = self.api('general/superpowers'), headers = self.headers, json = self.data_d, proxies = self.proxies)
         if req.status_code != 200: return req.json()['detail']
         else: return req.json()
 
     def plot(self) -> str:
-        data = {'d': self.d}
-        req = self.session.post(url = self.api('general/plot'), headers = self.headers, json = data, proxies = self.proxies)
+        req = self.session.post(url = self.api('general/plot'), headers = self.headers, json = self.data_d, proxies = self.proxies)
         if req.status_code != 200: return req.json()['detail']
         else: return req.json()
 
@@ -79,44 +71,37 @@ class randomall_api:
         else: return plotkeys(req.json()).plotkeys
 
     def awkwardMoment(self) -> str:
-        data = {'d': self.d}
-        req = self.session.post(url = self.api('general/awkward_moment'), headers = self.headers, json = data, proxies = self.proxies)
+        req = self.session.post(url = self.api('general/awkward_moment'), headers = self.headers, json = self.data_d, proxies = self.proxies)
         if req.status_code != 200: return req.json()['detail']
         else: return req.json()
 
     def unexpectedEvent(self) -> str:
-        data = {'d': self.d}
-        req = self.session.post(url = self.api('general/unexpected_event'), headers = self.headers, json = data, proxies = self.proxies)
+        req = self.session.post(url = self.api('general/unexpected_event'), headers = self.headers, json = self.data_d, proxies = self.proxies)
         if req.status_code != 200: return req.json()['detail']
         else: return req.json()
 
     def bookName(self) -> str:
-        data = {'d': self.d}
-        req = self.session.post(url = self.api('general/bookname'), headers = self.headers, json = data, proxies = self.proxies)
+        req = self.session.post(url = self.api('general/bookname'), headers = self.headers, json = self.data_d, proxies = self.proxies)
         if req.status_code != 200: return req.json()['detail']
         else: return req.json()
 
     def fantasyCountry(self) -> str:
-        data = {'d': self.d}
-        req = self.session.post(url = self.api('general/bookname'), headers = self.headers, json = data, proxies = self.proxies)
+        req = self.session.post(url = self.api('general/bookname'), headers = self.headers, json = self.data_d, proxies = self.proxies)
         if req.status_code != 200: return req.json()['detail']
         else: return req.json()
 
     def fantasyTown(self) -> str:
-        data = {'d': self.d}
-        req = self.session.post(url = self.api('general/fantasy_town'), headers = self.headers, json = data, proxies = self.proxies)
+        req = self.session.post(url = self.api('general/fantasy_town'), headers = self.headers, json = self.data_d, proxies = self.proxies)
         if req.status_code != 200: return req.json()['detail']
         else: return req.json()
 
     def fantasyContinent(self) -> str:
-        data = {'d': self.d}
-        req = self.session.post(url = self.api('general/fantasy_town'), headers = self.headers, json = data, proxies = self.proxies)
+        req = self.session.post(url = self.api('general/fantasy_town'), headers = self.headers, json = self.data_d, proxies = self.proxies)
         if req.status_code != 200: return req.json()['detail']
         else: return req.json()
 
     def countryDescription(self) -> str:
-        data = {'d': self.d}
-        req = self.session.post(url = self.api('general/country_description'), headers = self.headers, json = data, proxies = self.proxies)
+        req = self.session.post(url = self.api('general/country_description'), headers = self.headers, json = self.data_d, proxies = self.proxies)
         if req.status_code != 200: return req.json()['detail']
         else: return req.json()
 
