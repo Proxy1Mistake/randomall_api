@@ -124,7 +124,6 @@ class RandomallAPI(Data):
         if _req.status_code != 200: return _req.status_code
         else: return _req.json()
 
-    #the choice is given from 1 to 5
     @classmethod
     def plotkeys(cls, choice: int) -> int | Plotkeys:
         """
