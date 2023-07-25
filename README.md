@@ -5,10 +5,10 @@
 ###### This library is designed to work with the randomall.ru site API/Эта библиотека предназначена для работы с API сайта randomall.ru.
 ###### example/Пример :
 
-```
-from randomallAPI import randomallAPI
-randomallAPI = randomallAPI()
-login = randomallAPI.login(email = 'email', password = 'password')
+```py3
+from randomallAPI import RandomallAPI
+randomallAPI = RandomallAPI()
+randomallAPI.login(email = 'email', password = 'password')
 id = randomallAPI.gens(id = 'id').id[0]
 print(randomallAPI.like(id = id))
 ```
