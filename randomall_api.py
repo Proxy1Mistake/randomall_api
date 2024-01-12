@@ -1,8 +1,10 @@
 from .objects import *
+
 from random import choices
 from fake_useragent import FakeUserAgent
 from requests import Session
 from string import ascii_lowercase
+
 class Data:
     _api = 'https://randomall.ru/api/{}'.format
     _session = Session()
@@ -11,15 +13,14 @@ class Data:
 
 class RandomallAPI(Data):
     @classmethod
-    def fantasy_name(cls) -> int | str:
+    def fantasy_name(cls) -> int | list:
         """
         this function is designed to generate a name
 
         :return: string in json format or int
         """
         _req = cls._session.post(url = cls._api('general/fantasy_name'), headers = cls._headers, json = cls._data_d)
-        if _req.status_code != 200: return _req.status_code
-        else: return _req.json()
+        return _req.status_code if _req.status_code != 200 else str(_req.json()).replace('<br>', ', ')
 
     @classmethod
     def appearance(cls, var : str) -> int | str:
@@ -33,8 +34,7 @@ class RandomallAPI(Data):
         """
         cls._data_d.update(var = var)
         _req = cls._session.post(url = cls._api('general/appearance'), headers = cls._headers, json = cls._data_d)
-        if _req.status_code != 200: return _req.status_code
-        else: return _req.json()
+        return _req.status_code if _req.status_code != 200 else _req.json()
 
     @classmethod
     def crowd(cls) -> int | str:
@@ -44,8 +44,7 @@ class RandomallAPI(Data):
         :return: int or string in the form of json
         """
         _req = cls._session.post(url = cls._api('general/crowd'), headers = cls._headers, json = cls._data_d)
-        if _req.status_code != 200: return _req.status_code
-        else: return _req.json()
+        return _req.status_code if _req.status_code != 200 else _req.json()
 
     @classmethod
     def character(cls) -> int | str:
@@ -55,8 +54,7 @@ class RandomallAPI(Data):
         :return: int or string in the form of json
         """
         _req = cls._session.post(url = cls._api('general/character'), headers = cls._headers, json = cls._data_d)
-        if _req.status_code != 200: return _req.status_code
-        else: return _req.json()
+        return _req.status_code if _req.status_code != 200 else str(_req.json()).replace('<br>', ', ')
 
     @classmethod
     def abilities(cls) -> int | str:
@@ -66,8 +64,7 @@ class RandomallAPI(Data):
         :return: int or string in the form of json
         """
         _req = cls._session.post(url = cls._api('general/abilities'), headers = cls._headers, json = cls._data_d)
-        if _req.status_code != 200: return _req.status_code
-        else: return _req.json()
+        return _req.status_code if _req.status_code != 200 else _req.json()
 
     @classmethod
     def features(cls) -> int | str:
@@ -77,8 +74,7 @@ class RandomallAPI(Data):
         :return: int or string in the form of json
         """
         _req = cls._session.post(url = cls._api('general/features'), headers = cls._headers, json = cls._data_d)
-        if _req.status_code != 200: return _req.status_code
-        else: return _req.json()
+        return _req.status_code if _req.status_code != 200 else str(_req.json()).replace('<br>', ', ')
 
     @classmethod
     def jobs(cls) -> int | str:
@@ -88,8 +84,7 @@ class RandomallAPI(Data):
         :return: int or string in the form of json
         """
         _req = cls._session.post(url = cls._api('general/jobs'), headers = cls._headers, json = cls._data_d)
-        if _req.status_code != 200: return _req.status_code
-        else: return _req.json()
+        return _req.status_code if _req.status_code != 200 else _req.json()
 
     @classmethod
     def race(cls) -> int | str:
@@ -99,8 +94,7 @@ class RandomallAPI(Data):
         :return: int or string in the form of json
         """
         _req = cls._session.post(url = cls._api('general/race'), headers = cls._headers, json = cls._data_d)
-        if _req.status_code != 200: return _req.status_code
-        else: return _req.json()
+        return _req.status_code if _req.status_code != 200 else _req.json()
 
     @classmethod
     def superpowers(cls) -> int | str:
@@ -110,8 +104,7 @@ class RandomallAPI(Data):
         :return: int or string in the form of json
         """
         _req = cls._session.post(url = cls._api('general/superpowers'), headers = cls._headers, json = cls._data_d)
-        if _req.status_code != 200: return _req.status_code
-        else: return _req.json()
+        return _req.status_code if _req.status_code != 200 else _req.json()
 
     @classmethod
     def plot(cls) -> int | str:
@@ -121,8 +114,7 @@ class RandomallAPI(Data):
         :return: int or string in the form of json
         """
         _req = cls._session.post(url = cls._api('general/plot'), headers = cls._headers, json = cls._data_d)
-        if _req.status_code != 200: return _req.status_code
-        else: return _req.json()
+        return _req.status_code if _req.status_code != 200 else _req.json()
 
     @classmethod
     def plotkeys(cls, choice: int) -> int | Plotkeys:
@@ -136,8 +128,7 @@ class RandomallAPI(Data):
         """
         _data = {'choice': choice}
         _req = cls._session.get(url = cls._api('general/plotkeys'), headers = cls._headers, json = _data)
-        if _req.status_code != 200: return _req.status_code
-        else: return Plotkeys(data = _req.json()).plotkeys
+        return _req.status_code if _req.status_code != 200 else Plotkeys(**_req.json())
 
     @classmethod
     def awkward_moment(cls) -> int | str:
@@ -147,8 +138,7 @@ class RandomallAPI(Data):
         :return: int or string in the form of json
         """
         _req = cls._session.post(url = cls._api('general/awkward_moment'), headers = cls._headers, json = cls._data_d)
-        if _req.status_code != 200: return _req.status_code
-        else: return _req.json()
+        return _req.status_code if _req.status_code != 200 else _req.json()
 
     @classmethod
     def unexpected_event(cls) -> int | str:
@@ -158,8 +148,7 @@ class RandomallAPI(Data):
         :return: int or string in the form of json
         """
         _req = cls._session.post(url = cls._api('general/unexpected_event'), headers = cls._headers, json = cls._data_d)
-        if _req.status_code != 200: return _req.status_code
-        else: return _req.json()
+        return _req.status_code if _req.status_code != 200 else _req.json()
 
     @classmethod
     def book_name(cls) -> int | str:
@@ -169,8 +158,7 @@ class RandomallAPI(Data):
         :return: int or string in the form of json
         """
         _req = cls._session.post(url = cls._api('general/bookname'), headers = cls._headers, json = cls._data_d)
-        if _req.status_code != 200: return _req.status_code
-        else: return _req.json()
+        return _req.status_code if _req.status_code != 200 else _req.json()
 
     @classmethod
     def fantasy_country(cls) -> int | str:
@@ -180,8 +168,7 @@ class RandomallAPI(Data):
         :return: int or string in the form of json
         """
         _req = cls._session.post(url = cls._api('general/bookname'), headers = cls._headers, json = cls._data_d)
-        if _req.status_code != 200: return _req.status_code
-        else: return _req.json()
+        return _req.status_code if _req.status_code != 200 else _req.json()
 
     @classmethod
     def fantasy_town(cls) -> int | str:
@@ -191,8 +178,7 @@ class RandomallAPI(Data):
         :return: int or string in the form of json
         """
         _req = cls._session.post(url = cls._api('general/fantasy_town'), headers = cls._headers, json = cls._data_d)
-        if _req.status_code != 200: return _req.status_code
-        else: return _req.json()
+        return _req.status_code if _req.status_code != 200 else _req.json()
 
     @classmethod
     def fantasy_continent(cls) -> int | str:
@@ -202,8 +188,7 @@ class RandomallAPI(Data):
         :return: int or string in the form of json
         """
         _req = cls._session.post(url = cls._api('general/fantasy_town'), headers = cls._headers, json = cls._data_d)
-        if _req.status_code != 200: return _req.status_code
-        else: return _req.json()
+        return _req.status_code if _req.status_code != 200 else _req.json()
 
     @classmethod
     def country_description(cls) -> int | str:
@@ -213,11 +198,10 @@ class RandomallAPI(Data):
         :return: int or string in the form of json
         """
         _req = cls._session.post(url = cls._api('general/country_description'), headers = cls._headers, json = cls._data_d)
-        if _req.status_code != 200: return _req.status_code
-        else: return _req.json()\
+        return _req.status_code if _req.status_code != 200 else str(_req.json()).replace('<br><br>', '')
 
     @classmethod
-    def numbers(cls, count: str, max: str, min: str, repeat: bool = False) -> int | str:
+    def numbers(cls, count: int, max: int, min: int, repeat: bool = False) -> int | str:
         """
         this function is designed to generate random or random numbers
 
@@ -238,8 +222,7 @@ class RandomallAPI(Data):
         if repeat: repeat = repeat
         _data = {'count': count, 'max': max, 'min': min, 'repeat': repeat, 'symbol': " "}
         _req = cls._session.post(url = cls._api('general/numbers'), headers = cls._headers, json = _data)
-        if _req.status_code != 200: return _req.status_code
-        else: return _req.json()
+        return _req.status_code if _req.status_code != 200 else _req.json()
 
     @classmethod
     def names(cls, sex: int) -> int | str:
@@ -253,8 +236,7 @@ class RandomallAPI(Data):
         """
         _data = {'sex': sex}
         _req = cls._session.post(url = cls._api('general/names'), headers = cls._headers, json = _data)
-        if _req.status_code != 200: return _req.status_code
-        else: return _req.json()
+        return _req.status_code if _req.status_code != 200 else _req.json()
 
     @classmethod
     def surnames(cls) -> int | str:
@@ -282,26 +264,24 @@ class RandomallAPI(Data):
         """
         _data = {'start': start, 'end': end}
         _req = cls._session.post(url = cls._api('general/date'), headers = cls._headers, json = _data)
-        if _req.status_code != 200: return _req.status_code
-        else: return _req.json()
+        return _req.status_code if _req.status_code != 200 else _req.json()
 
     @classmethod
     def time(cls, start: str, end: str) -> int | str:
         """
         this function is designed to generate the time between two time intervals
 
-        :param start: the minimum time from which the generation will start
+        :param start: the minimum time from which the generation will start, example : 22:11
         :type start: :obj: `str`
 
-        :param end: the final time at which the generation will end
+        :param end: the final time at which the generation will end, example: 23:54
         :type end: :obj: `str`
 
         :return: int or string in the form of json
         """
         _data = {'start': start, 'end': end}
         _req = cls._session.post(url = cls._api('general/time'), headers = cls._headers, json = _data)
-        if _req.status_code != 200: return _req.status_code
-        else: return _req.json()
+        return _req.status_code if _req.status_code != 200 else _req.json()
 
     @classmethod
     def countries(cls) -> int | str:
@@ -311,8 +291,7 @@ class RandomallAPI(Data):
         :return: int or string in the form of json
         """
         _req = cls._session.post(url = cls._api('general/countries'), headers = cls._headers)
-        if _req.status_code != 200: return _req.status_code
-        else: return _req.json()
+        return _req.status_code if _req.status_code != 200 else _req.json()
 
     @classmethod
     def cities(cls) -> int | str:
@@ -322,8 +301,7 @@ class RandomallAPI(Data):
         :return: int or string in the form of json
         """
         _req = cls._session.post(url = cls._api('general/cities'), headers = cls._headers)
-        if _req.status_code != 200: return _req.status_code
-        else: return _req.json()
+        return _req.status_code if _req.status_code != 200 else _req.json()
 
     @classmethod
     def draw(cls) -> int | str:
@@ -333,8 +311,7 @@ class RandomallAPI(Data):
         :return: int or string in the form of json
         """
         _req = cls._session.post(url = cls._api('general/draw'), headers = cls._headers)
-        if _req.status_code != 200: return _req.status_code
-        else: return _req.json()
+        return _req.status_code if _req.status_code != 200 else _req.json()
 
     @classmethod
     def gens(cls, generator_id: str) -> int | str:
@@ -365,8 +342,7 @@ class RandomallAPI(Data):
         """
         _data = {'login': email, 'password': password}
         _req = cls._session.post(url = cls._api('users/login'), headers = cls._headers, json = _data)
-        if _req.status_code != 200: return _req.status_code
-        else: return _req.json()
+        return _req.status_code if _req.status_code != 200 else 'Authorization is successful'
 
     @classmethod
     def logout(cls) -> int | str:
@@ -376,19 +352,17 @@ class RandomallAPI(Data):
         :return: int or string in the form of json
         """
         _req = cls._session.post(url = cls._api('users/logout'), headers = cls._headers)
-        if _req.status_code != 200: return _req.status_code
-        else: return _req.json()
+        return _req.status_code if _req.status_code != 200 else 'Account logout is successful'
 
     @classmethod
-    def token(cls) -> int | Token:
+    def token(cls):
         """
         function for getting a token
 
         :return: int or string in the form of json
         """
         _req = cls._session.post(url = cls._api('users/token'), headers = cls._headers)
-        if _req.status_code != 200: return _req.status_code
-        else: return Token(data = req.json()).token
+        return _req.status_code if _req.status_code != 200 else Token(**_req.json())
 
     @classmethod
     def profile(cls, user_id: str) -> str:
@@ -401,11 +375,10 @@ class RandomallAPI(Data):
         :return: int or string in the form of json
         """
         _req = cls._session.get(url = cls._api(f'users/{user_id}/profile'), headers = cls._headers)
-        if _req.status_code != 200: return _req.status_code
-        else: return _req.json()
+        return _req.status_code if _req.status_code != 200 else _req.json()
 
     @classmethod
-    def user_gens(cls, user_id: str) -> int | Gens:
+    def user_gens(cls, user_id: str) -> int | list:
         """
         a function that is designed to get the user's generators
 
@@ -416,7 +389,7 @@ class RandomallAPI(Data):
         """
         _req = cls._session.get(url = cls._api(f'users/{user_id}/gens'), headers = cls._headers)
         if _req.status_code != 200: return _req.status_code
-        else: return Gens(data = req.json()).gens
+        return parse_obj_as(list[Gens], _req.json())
 
     @classmethod
     def like(cls, generator_id: str) -> int | str:
@@ -429,8 +402,7 @@ class RandomallAPI(Data):
         :return: int or string in the form of json
         """
         _req = cls._session.post(url = cls._api(f'gens/{generator_id}/like'), headers = cls.headers)
-        if _req.status_code != 200: return _req.status_code
-        else: return _req.json()
+        return _req.status_code if _req.status_code != 200 else _req.json()
 
     @classmethod
     def fav(cls, generator_id: str) -> int | str:
@@ -443,8 +415,7 @@ class RandomallAPI(Data):
         :return: int or string in the form of json
         """
         _req = cls._session.post(url = cls._api(f'gens/{generator_id}/fav'), headers = cls._headers)
-        if _req.status_code != 200: return _req.status_code
-        else: return _req.json()
+        return _req.status_code if _req.status_code != 200 else _req.json()
 
     @classmethod
     def me_favs(cls) -> int | MeFavs:
@@ -454,11 +425,10 @@ class RandomallAPI(Data):
         :return: int or objects MeFavs
         """
         _req = cls._session.get(url = cls._api('users/me/gens/favs'), headers = cls._headers)
-        if _req.status_code != 200: return _req.status_code
-        else: return MeFavs(data = _req.json()).me_favs
+        return _req.status_code if _req.status_code != 200 else parse_obj_as(list[MeFavs], _req.json())
 
     @classmethod
-    def search(cls, sorting_by: str, tags: str = None) -> int | Search:
+    def search(cls, sorting_by: str, tags: str = None):
         """
         function to search for custom generators
 
@@ -476,5 +446,4 @@ class RandomallAPI(Data):
             for _ in list(tags): _t += "".join(f"{_}&")
         cls._api = cls._api(f"{api_endpoints}&{_t[-1:]}")
         _req = cls._session.get(url = cls._api, headers = cls._headers)
-        if _req.status_code != 200: return _req.status_code
-        else: return Search(data = _req.json()).search
+        return _req.status_code if _req.status_code != 200 else parse_obj_as(list[Search], _req.json()['items'])
