@@ -1,8 +1,10 @@
 <h2 align = "center"><img src = "https://randomall.ru/favicon.ico" align = "center">andomallAPI</h2>
 <details align = "center">
-<summary>𝐫𝐞𝐯𝐞𝐚𝐥 𝐦𝐞 : </summary>
+<summary>ʀᴇᴠᴀʟ ᴍᴇ : </summary>
 
-###### This library is designed to work with the randomall.ru site API/Эта библиотека предназначена для работы с API сайта randomall.ru.
+###### ᴛʜɪs ʟɪʙʀᴀʀʏ ɪs ᴅᴇsɪɢɴᴇᴅ ᴛᴏ ᴡᴏʀᴋ ᴡɪᴛʜ ᴛʜᴇ sɪᴛᴇ ᴀᴘɪ ʀᴀɴᴅᴏᴍᴀʟʟ.ʀᴜ
+###### ϶ᴛᴀ бибᴧиоᴛᴇᴋᴀ ᴨᴩᴇднᴀзнᴀчᴇнᴀ дᴧя ᴩᴀбоᴛы ᴄ ᴀᴘɪ ᴄᴀйᴛᴀ ʀᴀɴᴅᴏᴍᴀʟʟ.ʀᴜ 
+
 ###### example/Пример :
 
 ```py3
@@ -15,9 +17,11 @@ print(randomallAPI.like(id = id))
 </details>
 
 <details align = "center">
-<summary>𝐌𝐲 𝐒𝐨𝐜𝐢𝐚𝐥 𝐍𝐞𝐭𝐰𝐨𝐫𝐤 : </summary>
+<summary>ᴍʏ sᴏᴄɪᴀʟ ɴᴇᴛᴡᴏʀᴋ : </summary>
 <br>
-<a href = "https://t.me/Proxy1Mallet", target="_blank">
-<img src = "https://kangaviv.com/wp-content/uploads/2020/10/telegram-1.png", width = 60px>
+<a href = "https://t.me/Proxy1Mallet" target="_blank">
+<img src = "https://img.shields.io/badge/ᴛᴇʟᴇɢʀᴀᴍ-92000a?logo=telegram&logoColor=FFFFFF&labelColor=000000">
+<a href = "https://discordapp.com/users/875370793100533862/" target="_blank">
+<img src = "https://img.shields.io/badge/ᴅɪsᴄᴏʀᴅ-92000a?logo=discord&logoColor=FFFFFF&labelColor=000000">
 </br>
 </details>
