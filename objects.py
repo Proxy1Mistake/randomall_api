@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from typing import Any
 
 class Plotkeys(BaseModel):
     category: str
@@ -28,9 +29,10 @@ class Gens(BaseModel):
     favsCount: int
     id: int
     likesCount: int
-    subcategories: str | None
+    subcategories: None | list | str
     tags: list
     title: str
+    variations: str
     views: int
 
 class MeFavs(BaseModel):
@@ -45,9 +47,10 @@ class MeFavs(BaseModel):
     favsCount: int
     id: int
     likesCount: int
-    subcategories: str | None
+    subcategories: None | list | str
     tags: list
     title: str
+    variations: str
     views: int
 
 class Search(BaseModel):
@@ -63,9 +66,8 @@ class Search(BaseModel):
     id: int
     liked: bool
     likesCount: int
-    subcategories: str | None
+    subcategories: None | list | str
     tags: list
     title: str
-    user: list
     variations: str
     views: int
