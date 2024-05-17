@@ -522,32 +522,32 @@ class RandomallAPI:
         return 'Your password has been changed.'
 
     @classmethod
-    def like(cls, generator_id: str) -> str:
+    def like(cls, generator_id: str) -> None:
         """
         the function that is performed in order to like the generator
 
         :param generator_id:
         :type generator_id: :obj: `str`
 
-        :return: int or string in the form of json
+        :return: None
         """
-        return cls.__request_method(method = 'post',
-                                    url = cls._api(f'gens/{generator_id}/like')
-                                    ).json()
+        cls.__request_method(method = 'post',
+                             url = cls._api(f'gens/{generator_id}/like')
+                             )
 
     @classmethod
-    def fav(cls, generator_id: str) -> str:
+    def fav(cls, generator_id: str) -> None:
         """
         the function that is performed in order to add the generator to favorites
 
         :param generator_id: id of the generator
         :type generator_id: :obj: `str`
 
-        :return: int or string in the form of json
+        :return: None
         """
-        return cls.__request_method(method = 'post',
-                                    url = cls._api(f'gens/{generator_id}/fav')
-                                    ).json()
+        cls.__request_method(method = 'post',
+                             url = cls._api(f'gens/{generator_id}/fav')
+                             )
 
     @classmethod
     def me_favs(cls) -> list[MeFavs]:
