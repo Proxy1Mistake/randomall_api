@@ -1,4 +1,4 @@
-<h2 align = "center"><img src = "https://randomall.ru/favicon.ico" align = "center">andomallAPI</h2>
+<h2 align = "center"><img src = "https://randomall.ru/logo.svg" align = "center">andomallAPI</h2>
 <details>
 <summary>ʀᴇᴠᴀʟ ᴍᴇ : </summary>
 
