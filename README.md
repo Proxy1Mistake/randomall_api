@@ -1,5 +1,5 @@
 <h2 align = "center"><img src = "https://randomall.ru/favicon.ico" align = "center">andomallAPI</h2>
-<details align = "center">
+<details>
 <summary>ʀᴇᴠᴀʟ ᴍᴇ : </summary>
 
 ###### ᴛʜɪs ʟɪʙʀᴀʀʏ ɪs ᴅᴇsɪɢɴᴇᴅ ᴛᴏ ᴡᴏʀᴋ ᴡɪᴛʜ ᴛʜᴇ sɪᴛᴇ ᴀᴘɪ ʀᴀɴᴅᴏᴍᴀʟʟ.ʀᴜ
@@ -8,15 +8,23 @@
 ###### example/Пример :
 
 ```py3
-from randomallAPI import RandomallAPI
-randomallAPI = RandomallAPI()
-randomallAPI.login(email = 'email', password = 'password')
-id = randomallAPI.gens(id = 'id').id[0]
-print(randomallAPI.like(id = id))
+from randomall_api import RandomallAPI
+
+RandomallAPI.login(email = 'Proxy1Mallet', password = 'ThisIsCool')
+
+for _ in RandomallAPI.search():
+    RandomallAPI.like(generator_id = str(_.id))
+    RandomallAPI.fav(generator_id = str(_.id))
+    
+RandomallAPI.new_username(username = 'Proxy1Mistake')
+
+RandomallAPI.new_password(old_password = 'ThisIsCool', new_password = 'YesThisIsCool')
+
+RandomallAPI.logout()
 ```
 </details>
 
-<details align = "center">
+<details>
 <summary>ᴍʏ sᴏᴄɪᴀʟ ɴᴇᴛᴡᴏʀᴋ : </summary>
 <br>
 <a href = "https://t.me/Proxy1Mistake" target="_blank">
